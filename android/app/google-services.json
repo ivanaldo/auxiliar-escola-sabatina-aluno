@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "332446422605",
+    "project_id": "escola-sabatina-65d58",
+    "storage_bucket": "escola-sabatina-65d58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332446422605:android:15824d2ad3346593952e04",
+        "android_client_info": {
+          "package_name": "anuncios.icmtechnology.escola_sabatina_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWsqzpYDK076fbDx4C9B87z15hCOugHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332446422605:android:6a6f963e28e908c5952e04",
+        "android_client_info": {
+          "package_name": "com.example.auxiliar_escola_sabatina_aluno"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWsqzpYDK076fbDx4C9B87z15hCOugHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332446422605:android:1462860b9ed0936b952e04",
+        "android_client_info": {
+          "package_name": "escolasabatinaalunos.icmtechnology.escola_sabatina_alunos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWsqzpYDK076fbDx4C9B87z15hCOugHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
