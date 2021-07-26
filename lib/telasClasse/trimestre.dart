@@ -12,8 +12,6 @@ class Trimestre extends StatefulWidget {
 
 bool _progresBarLinear;
 NumberFormat formatter = NumberFormat("0.0");
-FirebaseAuth auth = FirebaseAuth.instance;
-User user = auth.currentUser;
 
 int _membros = 0;
 int _trimestre = _membros*14;
@@ -41,6 +39,8 @@ class _TrimestreState extends State<Trimestre> {
 
   //retorna quantos membros tem na classe
   Future<dynamic> _retornaMembros() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = auth.currentUser;
     String usuario = user.uid;
 
     _membros = 0;
@@ -62,7 +62,10 @@ class _TrimestreState extends State<Trimestre> {
   }
 
   Future<dynamic>_calculaDadosMembros() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = auth.currentUser;
     String usuario = user.uid;
+    bool liberaCor = false;
 
     FirebaseFirestore db = FirebaseFirestore.instance;
     db.collection("dados_classe")
@@ -76,10 +79,22 @@ class _TrimestreState extends State<Trimestre> {
       estudoBiblico = 0;
       atividadeMissionario = 0;
 
-      for (DocumentSnapshot dados in snapshot.docs) {
+      _presenca = 0.0;
+      _estudouBiblia = 0.0;
+      _pequenoGrupo = 0.0;
+      _estudoBiblico = 0.0;
+      _atividadeMissionario = 0.0;
 
+      corPresenca = Colors.transparent;
+      corEstudouBiblia = Colors.transparent;
+      corPequenoGrupo = Colors.transparent;
+      corEstudoBiblico = Colors.transparent;
+      corAtividadeMissionaria = Colors.transparent;
+
+      for (DocumentSnapshot dados in snapshot.docs) {
         if(dados.exists) {
           setState(() {
+            liberaCor = true;
             presenca             += dados["presenca"];
             estudouBiblia        += dados["estudouBiblia"];
             pequenoGrupo        += dados["pequenoGrupo"];
@@ -92,15 +107,18 @@ class _TrimestreState extends State<Trimestre> {
             _estudoBiblico        = (estudoBiblico*100)/_trimestre;
             _atividadeMissionario = (atividadeMissionario*100)/_trimestre;
 
-            _corPresenca();
-            _corEstudouBiblia();
-            _corPequenoGrupo();
-            _corEstudoBiblico();
-            _corAtividadeMissionario();
-
-
           });
         }
+      }
+      if (liberaCor == true) {
+        setState(() {
+          _corPresenca();
+          _corEstudouBiblia();
+          _corPequenoGrupo();
+          _corEstudoBiblico();
+          _corAtividadeMissionario();
+          liberaCor = false;
+        });
       }
     });
   }

@@ -12,12 +12,6 @@ class Usuarios{
 
   Usuarios();
 
-  Usuarios.gerarId(){
-    FirebaseFirestore db = FirebaseFirestore.instance;
-    CollectionReference usuario = db.collection("classes");
-    //this.id = usuario.doc().documentID;
-  }
-
   Usuarios.fromDocumentSnapshot(DocumentSnapshot documentSnapshot){
 
     this.id           = documentSnapshot.id;

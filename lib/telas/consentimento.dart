@@ -8,8 +8,8 @@ import 'package:flutter/widgets.dart';
 
 
 class Consentimento extends StatefulWidget {
-  String _data;
-  String _nome;
+  final String _data;
+  final String _nome;
   Consentimento(this._data, this._nome);
 
   @override
@@ -28,7 +28,7 @@ class _ConsentimentoState extends State<Consentimento> {
     _db.atualizarNome(dadosAtual);
 
     Navigator.pop(_dialogContext);
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginAluno(widget._data, nome: widget._nome)));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginAluno()));
 
   }
 

@@ -68,7 +68,6 @@ class _PastorState extends State<Pastor> {
         .where("idIgreja", isEqualTo: _idIgreja)
         .get();
     for (DocumentSnapshot dados in querySnapshot.docs) {
-      //var dadoPastor = dados.data();
       if(dados.exists){
         setState(() {
           _progresBarLinear = false;

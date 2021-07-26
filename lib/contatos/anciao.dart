@@ -74,8 +74,6 @@ class _AnciaoState extends State<Anciao> {
           _nome        = dados["nome"];
           _telefone    = dados["telefone"];
           _aniversario = dados["aniversario"];
-          if(_nome != false){
-          }
         });
       }
     }

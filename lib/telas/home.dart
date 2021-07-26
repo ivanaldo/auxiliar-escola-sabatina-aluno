@@ -24,9 +24,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
-  bool _validar;
-  String _nome;
-  String _dataBD;
+  final bool _validar;
+  final String _nome;
+  final String _dataBD;
   Home(this._validar, this._nome, this._dataBD);
 
   @override
@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
 
   _liberaBotoes() async {
     DateTime date = DateTime.now();
-    date = DateTime(date.year, date.month, date.day-1);
+    date = DateTime(date.year, date.month, date.day);
     data = DateFormat("dd.MM.yyyy").format(date);
     dia = DateFormat("EEEE").format(date);
 
@@ -331,20 +331,19 @@ class _HomeState extends State<Home> {
     fToast.init(context);
   }
 
-  Future <bool> _sairApp() {
-    if (_progresBarLinear == true) {
-
-    } else {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) =>
-              FechaApp()), (Route<dynamic> route) => false);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: _sairApp,
+      onWillPop: () async {
+        if (_progresBarLinear == true) {
+          return false;
+        } else {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) =>
+                  FechaApp()), (Route<dynamic> route) => false);
+          return true;
+        }
+      },
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff032640),
@@ -407,7 +406,7 @@ class _HomeState extends State<Home> {
                 onTap: () {
                   FirebaseAuth auth = FirebaseAuth.instance;
                   auth.signOut();
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginAluno( widget._dataBD, nome: '',)),);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginAluno()),);
                 },
               ),
             ],

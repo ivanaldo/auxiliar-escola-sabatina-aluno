@@ -28,9 +28,10 @@ class _AlunosClasseState extends State<AlunosClasse> {
         .where("idClasse", isEqualTo: idClasse)
         .snapshots();
 
-    stream.listen((dados){
+       stream.listen((dados){
       _controller.add( dados );
     });
+
   }
 
   @override

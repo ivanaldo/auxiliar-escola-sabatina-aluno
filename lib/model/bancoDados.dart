@@ -13,8 +13,7 @@ class BancoDados{
     return _dataHelper;
   }
 
-  BancoDados._internal(){
-  }
+  BancoDados._internal();
 
   get db async {
 

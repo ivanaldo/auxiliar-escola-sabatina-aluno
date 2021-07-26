@@ -54,8 +54,8 @@ class _MembrosState extends State<Membros> {
         .collection("alunos")
         .snapshots();
 
-    stream.listen((dados){
-      _controller.add( dados );
+        stream.listen((dados){
+       _controller.add( dados );
     });
 
   }

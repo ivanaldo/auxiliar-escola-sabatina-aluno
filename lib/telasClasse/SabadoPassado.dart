@@ -12,8 +12,6 @@ class SabadoPassado extends StatefulWidget {
 
 bool _progresBarLinear;
 NumberFormat formatter = NumberFormat("0.0");
-FirebaseAuth auth = FirebaseAuth.instance;
-User user = auth.currentUser;
 int _membros = 0;
 double _presenca = 0.0;
 double _estudouBiblia = 0.0;
@@ -33,14 +31,14 @@ Color corPequenoGrupo;
 Color corEstudoBiblico;
 Color corAtividadeMissionaria;
 
-List<String> datas = [];
-
 CalculoDados dados = new CalculoDados();
 
 class _SabadoPassadoState extends State<SabadoPassado> {
 
   //retorna quantos membros tem na classe
   Future<dynamic> _retornaMembros() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = auth.currentUser;
     String usuario = user.uid;
 
     _membros = 0;
@@ -61,17 +59,18 @@ class _SabadoPassadoState extends State<SabadoPassado> {
     _calculaDadosMembros();
   }
 
-  void _datas(){
+
+  Future<dynamic>_calculaDadosMembros() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = auth.currentUser;
+    String usuario = user.uid;
+    List<String> datas = [];
+
     for(int i = 1; i <= 7; i++) {
       DateTime date = DateTime.now();
       date = DateTime(date.year, date.month, date.day - i);
       datas.add(DateFormat("dd/MM/yyyy").format(date));
     }
-  }
-
-  Future<dynamic>_calculaDadosMembros() async {
-    String usuario = user.uid;
-    var dadosMembros;
 
     presenca = 0;
     estudouBiblia = 0;
@@ -79,7 +78,19 @@ class _SabadoPassadoState extends State<SabadoPassado> {
     estudoBiblico = 0;
     atividadeMissionario = 0;
 
-    for (int i = 0; i < datas.length; i++){
+    _presenca = 0.0;
+    _estudouBiblia = 0.0;
+    _pequenoGrupo = 0.0;
+    _estudoBiblico = 0.0;
+    _atividadeMissionario = 0.0;
+
+    corPresenca = Colors.transparent;
+    corEstudouBiblia = Colors.transparent;
+    corPequenoGrupo = Colors.transparent;
+    corEstudoBiblico = Colors.transparent;
+    corAtividadeMissionaria = Colors.transparent;
+
+    for (int i = 0; i < datas.length; i++) {
       FirebaseFirestore db = FirebaseFirestore.instance;
       QuerySnapshot querySnapshot = await db
           .collection("dados_classe")
@@ -89,14 +100,13 @@ class _SabadoPassadoState extends State<SabadoPassado> {
           .get();
 
       for (DocumentSnapshot dados in querySnapshot.docs) {
-        if(dados.exists) {
-          dadosMembros = dados.data();
+        if (dados.exists) {
           setState(() {
-            presenca += dadosMembros["presenca"];
-            estudouBiblia += dadosMembros["estudouBiblia"];
-            pequenoGrupo += dadosMembros["pequenoGrupo"];
-            estudoBiblico += dadosMembros["estudoBiblico"];
-            atividadeMissionario += dadosMembros["atividadeMissionario"];
+            presenca += dados["presenca"];
+            estudouBiblia += dados["estudouBiblia"];
+            pequenoGrupo += dados["pequenoGrupo"];
+            estudoBiblico += dados["estudoBiblico"];
+            atividadeMissionario += dados["atividadeMissionario"];
 
             _presenca = (presenca * 100) / _membros;
             _estudouBiblia = (estudouBiblia * 100) / _membros;
@@ -109,7 +119,6 @@ class _SabadoPassadoState extends State<SabadoPassado> {
             _corPequenoGrupo();
             _corEstudoBiblico();
             _corAtividadeMissionario();
-
           });
         }
       }
@@ -189,7 +198,6 @@ class _SabadoPassadoState extends State<SabadoPassado> {
   @override
   void initState() {
     super.initState();
-    _datas();
     _progresBarLinear = true;
     _retornaMembros();
   }

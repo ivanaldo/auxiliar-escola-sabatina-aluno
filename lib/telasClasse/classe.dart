@@ -7,8 +7,8 @@ import 'package:flutter/services.dart';
 
 
 class Classe extends StatefulWidget {
-  String _nome;
-  String _dataBD;
+  final String _nome;
+  final String _dataBD;
   Classe(this._nome, this._dataBD);
 
   @override
@@ -16,17 +16,16 @@ class Classe extends StatefulWidget {
 }
 
 class _ClasseState extends State<Classe> {
-  final int _pageCount = 3;
+  int _pageCount = 3;
   int _pageIndex = 0;
-
-  Future<bool> _botaoVoltar(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Home(true, widget._nome, widget._dataBD)));
-  }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: _botaoVoltar,
+        onWillPop: () async {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Home(true, widget._nome, widget._dataBD)));
+        return true;
+          },
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Color(0xff032640),

@@ -2,7 +2,7 @@ import 'package:escola_sabatina_alunos/model/alunos.dart';
 import 'package:flutter/material.dart';
 
 class ItemAlunos extends StatelessWidget {
-  Alunos aluno;
+  final Alunos aluno;
 
   ItemAlunos({
     @required this.aluno,
@@ -38,6 +38,7 @@ class ItemAlunos extends StatelessWidget {
                             Container(
                               alignment: Alignment.topLeft,
                               child: Text(
+
                                 aluno.data,
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
@@ -46,10 +47,192 @@ class ItemAlunos extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Text(
-                        aluno.presenca,
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                      Container(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Text(aluno.data),
+                                  Text(
+                                    aluno.presenca,
+                                    style: TextStyle(
+                                        fontSize: 16, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              )
+                          ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Text("2"),
+                                  Text(
+                                    aluno.presenca,
+                                    style: TextStyle(
+                                        fontSize: 16, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              )
+                          ),),
+                          Expanded(
+                              child: Container(
+                                  child: Column(
+                                    children: [
+                                      Text("3"),
+                                      Text(
+                                        aluno.presenca,
+                                        style: TextStyle(
+                                            fontSize: 16, fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  )
+                              ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("4"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("5"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("6"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("7"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("8"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("9"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("10"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                child: Column(
+                                  children: [
+                                    Text("11"),
+                                    Text(
+                                      aluno.presenca,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ),
+                         Expanded(
+                           child:  Container(
+                             child: Column(
+                               children: [
+                                 Text("12"),
+                                 Text(
+                                   aluno.presenca,
+                                   style: TextStyle(
+                                       fontSize: 16, fontWeight: FontWeight.bold),
+                                 ),
+                               ],
+                             )
+                         ),
+                         ),
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Text("13"),
+                                  Text(
+                                    aluno.presenca,
+                                    style: TextStyle(
+                                        fontSize: 16, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              )
+                          ),
+                          )
+                        ],
+                      ),
                       ),
                     ],
                   ),

@@ -1,6 +1,6 @@
 import 'package:escola_sabatina_alunos/telas/splash.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 class SplashP extends StatefulWidget {
   @override

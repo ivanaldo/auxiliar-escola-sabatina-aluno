@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class ItemMembros extends StatelessWidget {
 
-  Usuarios usuario;
-  VoidCallback onTapWhatsapp;
-  VoidCallback onTapTelefone;
-  VoidCallback onPressedRemover;
+  final Usuarios usuario;
+  final VoidCallback onTapWhatsapp;
+  final VoidCallback onTapTelefone;
+  final VoidCallback onPressedRemover;
 
   ItemMembros({
     @required this.usuario,
@@ -55,8 +55,8 @@ class ItemMembros extends StatelessWidget {
                                       padding: EdgeInsets.fromLTRB(28, 16, 28, 16)
                                   ),
                                   onPressed: (){
-                                    this.onTapTelefone;
                                     fazerUmaLigacao(usuario.telefone);
+                                    return onTapTelefone;
                                   },
                                 ),
                               )
@@ -73,8 +73,8 @@ class ItemMembros extends StatelessWidget {
                                       padding: EdgeInsets.fromLTRB(28, 16, 28, 16)
                                   ),
                                   onPressed: (){
-                                    this.onTapWhatsapp;
                                     abrirWhatstapp(usuario.telefone);
+                                    return onTapWhatsapp;
                                   },
                                 ),
                               )
